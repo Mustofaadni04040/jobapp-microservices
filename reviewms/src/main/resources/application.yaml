@@ -1,6 +1,6 @@
 spring:
   application:
-    name: reviewms
+    name: review-service
   datasource:
     url: jdbc:postgresql://localhost:5433/review
     username:
