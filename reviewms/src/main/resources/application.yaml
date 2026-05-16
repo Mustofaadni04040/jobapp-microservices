@@ -3,8 +3,8 @@ spring:
     name: reviewms
   datasource:
     url: jdbc:postgresql://localhost:5433/review
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    username:
+    password:
   jpa:
     database: PostgreSQL
     show-sql: true

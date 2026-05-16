@@ -3,8 +3,8 @@ spring:
     name: companyms
   datasource:
     url: jdbc:postgresql://localhost:5433/company
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
+    username:
+    password:
   jpa:
     database: PostgreSQL
     show-sql: true
