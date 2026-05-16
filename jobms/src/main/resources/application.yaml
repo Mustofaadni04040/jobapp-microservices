@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: jobms
+  datasource:
+    url: jdbc:h2:mem:jobmsdb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8082
