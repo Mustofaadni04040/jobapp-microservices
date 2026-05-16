@@ -1,5 +1,6 @@
 package com.project.jobms.job;
 
+import com.project.jobms.job.dto.JobWithCompanyDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class JobController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Job>> findAll() {
-        List<Job> jobs = jobService.findAll();
+    public ResponseEntity<List<JobWithCompanyDTO>> findAll() {
+        List<JobWithCompanyDTO> jobs = jobService.findAll();
 
         if (jobs.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
