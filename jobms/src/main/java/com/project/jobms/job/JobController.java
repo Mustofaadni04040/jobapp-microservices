@@ -19,33 +19,18 @@ public class JobController {
     @GetMapping
     public ResponseEntity<List<JobWithCompanyDTO>> findAll() {
         List<JobWithCompanyDTO> jobs = jobService.findAll();
-
-        if (jobs.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
         return ResponseEntity.ok(jobs);
     }
 
     @PostMapping
     public ResponseEntity<String> createJob(@RequestBody Job job) {
-//        List<Company> companies = companyService.getAllCompanies();
-//
-//        if (companies.isEmpty()) {
-//            return new ResponseEntity<>("No companies found. Please create a company before creating a job.", HttpStatus.BAD_REQUEST);
-//        }
         jobService.createJob(job);
         return new ResponseEntity<>("Job created successfully", HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<JobWithCompanyDTO> getJobById(@PathVariable Long id) {
-        JobWithCompanyDTO jobWithCompanyDTO = jobService.getJobById(id);
-
-        if (jobWithCompanyDTO != null) {
-            return ResponseEntity.ok(jobWithCompanyDTO);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(jobService.getJobById(id));
     }
 
     @DeleteMapping("/{id}")
