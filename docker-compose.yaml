@@ -11,7 +11,7 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - postgres
+      - backend
     restart: unless-stopped
   pgadmin:
     container_name: pgadmin_jobapp
@@ -25,11 +25,21 @@ services:
     ports:
       - "5050:80"
     networks:
-      - postgres
+      - backend
     restart: unless-stopped
 
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    container_name: zipkin_jobapp
+    ports:
+      - "9411:9411"
+    networks:
+      - backend
+
+
 networks:
-  postgres:
+  backend:
     driver: bridge
 
 volumes:
