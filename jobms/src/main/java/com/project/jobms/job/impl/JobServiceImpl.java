@@ -39,7 +39,7 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    @CircuitBreaker(name = "companyBreaker")
+    @CircuitBreaker(name = "companyBreaker", fallbackMethod = "companyBreakerFallback")
     public List<JobDTO> findAll() {
         List<Job> jobs = jobRepository.findAll();
         List<JobDTO> jobDTOS = new ArrayList<>();
@@ -108,5 +108,11 @@ public class JobServiceImpl implements JobService {
             List<Review> reviews = reviewClient.getReviews(job.getCompanyId());
 
             return JobMapper.mapToJobDTO(job, company, reviews);
+    }
+
+    public List<String> companyBreakerFallback(Exception e) {
+        List<String> list = new ArrayList<>();
+        list.add("Company service currently is unavailable. Please try again later.");
+        return list;
     }
 }
