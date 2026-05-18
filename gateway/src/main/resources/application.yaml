@@ -7,19 +7,31 @@ spring:
     gateway:
       routes:
         - id: company-service
-          uri: http://localhost:8081
+          uri: lb://company-service
           predicates:
             - Path=/companies,/companies/**
 
         - id: job-service
-          uri: http://localhost:8082
+          uri: lb://job-service
           predicates:
             - Path=/jobs,/jobs/**
 
         - id: review-service
-          uri: http://localhost:8083
+          uri: lb://review-service
           predicates:
             - Path=/reviews,/reviews/**
+
+        - id: eureka-server
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/main
+          filters:
+            - SetPath=/
+
+        - id: eureka-server-static
+          uri: http://localhost:8761
+          predicates:
+            - Path=/eureka/**
 
 logging:
   level:
