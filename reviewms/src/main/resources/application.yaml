@@ -1,3 +1,10 @@
+job-service:
+  url: http://localhost:8082
+company-service:
+  url: http://localhost:8081
+review-service:
+  url: http://localhost:8083
+
 spring:
   application:
     name: review-service
