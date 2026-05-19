@@ -9,9 +9,9 @@ spring:
   application:
     name: review-service
   datasource:
-    url: jdbc:postgresql://postgres_jobapp:5433/review
-    username:
-    password:
+    url: jdbc:postgresql://postgres_jobapp:5432/review
+    username: postgres
+    password: postgres
   jpa:
     database: PostgreSQL
     show-sql: true
@@ -19,7 +19,7 @@ spring:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   rabbitmq:
-    host: localhost
+    host: rabbitmq_jobapp
     port: 5672
     username: guest
     password: guest

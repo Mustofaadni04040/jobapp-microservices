@@ -9,9 +9,9 @@ spring:
   application:
     name: job-service
   datasource:
-    url: jdbc:postgresql://postgres_jobapp:5433/job
-    username:
-    password:
+    url: jdbc:postgresql://postgres_jobapp:5432/job
+    username: postgres
+    password: postgres
   jpa:
     database: PostgreSQL
     show-sql: true
@@ -19,7 +19,7 @@ spring:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   config:
-    import: optional:configserver://config-server:8080
+    import: optional:configserver://config-server-ms:8080
 server:
   port: 8082
 

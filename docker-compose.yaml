@@ -28,6 +28,80 @@ services:
       - backend
     restart: unless-stopped
 
+#  config-server-ms:
+#    image: dcode007/config-server-ms:latest
+#    container_name: config-server-ms
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - servicereg
+#    networks:
+#      - microservice-network
+#      - backend
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:MaxMetaspaceSize=192m
+#
+#  servicereg:
+#    image: dcode007/servicereg:latest
+#    container_name: servicereg
+#    ports:
+#      - "8761:8761"
+#    depends_on:
+#      - rabbitmq
+##      - zipkin
+#      - postgres
+##      - pgadmin
+#    networks:
+#      - microservice-network
+#      - backend
+
+#  companyms:
+#    image: dcode007/companyms:latest
+#    container_name: company
+#    ports:
+#      - 8081:8081
+#    depends_on:
+#      - servicereg
+#      - config-server-ms
+#    networks:
+#      - microservice-network
+#      - backend
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:MaxMetaspaceSize=192m
+#
+#  jobms:
+#    image: dcode007/jobms:latest
+#    container_name: job
+#    ports:
+#      - 8082:8082
+#    depends_on:
+#      - servicereg
+#      - config-server-ms
+#    networks:
+#      - microservice-network
+#      - backend
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka
+#      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:MaxMetaspaceSize=192m
+#
+#  reviewms:
+#    image: dcode007/reviewms:latest
+#    container_name: review
+#    ports:
+#      - 8083:8083
+#    depends_on:
+#      - servicereg
+#      - config-server-ms
+#    networks:
+#      - microservice-network
+#      - backend
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:MaxMetaspaceSize=192m
+
   zipkin:
     image: openzipkin/zipkin
     mem_limit: 700m
@@ -46,8 +120,23 @@ services:
     networks:
       - backend
 
+#  gateway-ms:
+#    image: dcode007/gateway-ms:latest
+#    ports:
+#      - 8084:8084
+#    depends_on:
+#      - servicereg
+#    networks:
+#      - microservice-network
+#      - backend
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - JAVA_TOOL_OPTIONS=-Xms64m -Xmx512m -XX:+UseSerialGC -XX:MaxMetaspaceSize=192m
+
 
 networks:
+  microservice-network:
+    driver: bridge
   backend:
     driver: bridge
 
