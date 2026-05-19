@@ -37,6 +37,15 @@ services:
     networks:
       - backend
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_jobapp
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - backend
+
 
 networks:
   backend:

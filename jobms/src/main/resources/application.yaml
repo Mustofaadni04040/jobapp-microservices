@@ -50,3 +50,14 @@ resilience4j:
         failureRateThreshold: 80
         automatic-transition-from-open-to-half-open-enabled: true
         sliding-window-type: count_based
+#  retry:
+#    instances:
+#      companyRetry:
+#        max-attempts: 3
+#        wait-duration: 2s
+  ratelimiter:
+    instances:
+      companyBreaker:
+        limit-for-period: 10
+        limit-refresh-period: 4s
+        timeout-duration: 0s
