@@ -89,7 +89,7 @@ Base URL Gateway: `http://localhost:8084`
 docker compose up -d
 ```
 
-### 2) Jalankan microservices (urut recommended)
+### 2) Jalankan microservices (urut)
 
 1. Eureka Server
 
